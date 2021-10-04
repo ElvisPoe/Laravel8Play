@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+// Get all articles
+Route::get('/articles', function () {
+    return view('articles', [
+        'articles' => Article::all()
+    ]);
+});
+
+// Get article by slug
+Route::get('articles/{article}', function ($slug){
+    return view('article', [
+        'article' => Article::find($slug)
+    ]);
 });
