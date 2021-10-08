@@ -1,1 +1,0 @@
-<button {{ $attrs }}>{{ $slot }}</button>

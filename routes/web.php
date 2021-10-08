@@ -1,6 +1,9 @@
 <?php
 
 use App\Models\Article;
+use App\Models\Category;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,19 +19,48 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 
-// Get all articles
+
+// Articles
 Route::get('/articles', function () {
-    return view('articles', [
+    return view('articles.index', [
         'articles' => Article::all()
     ]);
-});
+})->name('articles.index');
 
-// Get article by slug
 Route::get('articles/{article}', function ($slug){
-    return view('article', [
+    return view('articles.show', [
         'article' => Article::find($slug)
     ]);
-});
+})->name('articles.show');
+
+
+// Posts
+Route::get('/posts', function () {
+    return view('posts.index', [
+        'posts' => Post::latest()->get()
+    ]);
+})->name('posts.index');
+
+Route::get('posts/{post}', function (Post $post){ // posts/{post:slug}
+    return view('posts.show', [
+        'post' => $post
+    ]);
+})->name('posts.show');
+
+// Post Categories
+Route::get('categories/{category:slug}', function (Category $category){
+    return view('posts.index', [
+        'posts' => $category->posts
+    ]);
+})->name('categories.show');
+
+
+// Post Author
+Route::get('author/posts/{author:username}', function (User $author){
+    return view('posts.index', [
+        'posts' => $author->posts
+    ]);
+})->name('authors.show');
