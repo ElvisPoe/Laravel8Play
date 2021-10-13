@@ -4,6 +4,31 @@
 
     <div class="container pt-5">
 
+        <div class="row mb-5">
+            <div class="col-6">
+                <h2>Posts</h2>
+            </div>
+            <div class="col-3 text-center">
+                <x-dropdown>
+                    <x-slot name="all_selection">
+                        <option value="all">All</option>
+                    </x-slot>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->slug }}"
+                            {{ isset($currentCategory) && $currentCategory->is($category) ? 'selected' : '' }}>
+                            {{ ucfirst($category->name) }}
+                        </option>
+                    @endforeach
+                </x-dropdown>
+            </div>
+
+            <div class="col-3 text-center">
+                <div>
+
+                </div>
+            </div>
+        </div>
+
         <div class="row">
 
             @foreach($posts as $post)

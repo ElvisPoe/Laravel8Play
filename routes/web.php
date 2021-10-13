@@ -40,7 +40,8 @@ Route::get('articles/{article}', function ($slug){
 // Posts
 Route::get('/posts', function () {
     return view('posts.index', [
-        'posts' => Post::latest()->get()
+        'posts' => Post::latest()->get(),
+        'categories' => Category::all()
     ]);
 })->name('posts.index');
 
@@ -53,7 +54,9 @@ Route::get('posts/{post}', function (Post $post){ // posts/{post:slug}
 // Post Categories
 Route::get('categories/{category:slug}', function (Category $category){
     return view('posts.index', [
-        'posts' => $category->posts
+        'posts' => $category->posts,
+        'currentCategory' => $category,
+        'categories' => Category::all()
     ]);
 })->name('categories.show');
 
@@ -61,6 +64,7 @@ Route::get('categories/{category:slug}', function (Category $category){
 // Post Author
 Route::get('author/posts/{author:username}', function (User $author){
     return view('posts.index', [
-        'posts' => $author->posts
+        'posts' => $author->posts,
+        'categories' => Category::all()
     ]);
 })->name('authors.show');
