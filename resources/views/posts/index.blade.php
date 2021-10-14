@@ -6,8 +6,9 @@
 
         <div class="row mb-5">
             <div class="col-6">
-                <h2>Posts</h2>
+                <h2><a href="/posts">Posts</a></h2>
             </div>
+
             <div class="col-3 text-center">
                 <x-dropdown>
                     <x-slot name="all_selection">
@@ -22,18 +23,20 @@
                 </x-dropdown>
             </div>
 
-            <div class="col-3 text-center">
-                <div>
-
-                </div>
+            <div class="col-3 text-right">
+                <form action="/posts" method="GET">
+                    <label for="search">
+                        <input type="search" name="search" id="search" class="form-control" placeholder="Search posts" value="{{ request('search') }}">
+                    </label>
+                </form>
             </div>
         </div>
 
         <div class="row">
 
-            @foreach($posts as $post)
+            @forelse($posts as $post)
 
-                <div class="col-12 col-md-4">
+                <div class="col-12 col-md-4 mb-3">
                     <div class="card">
                         <img class="card-img-top" src="https://picsum.photos/600/300" alt="Card image cap">
                         <div class="card-body">
@@ -48,7 +51,20 @@
                     </div>
                 </div>
 
-            @endforeach
+            @empty
+
+                <div class="col-12">
+                    <h4 class="text-center">No Posts</h4>
+                </div>
+
+            @endforelse
+
+            @if($posts->links())
+                <div class="col-12 text-center">
+                    {{ $posts->links() }}
+                </div>
+            @endif
+
 
         </div>
 

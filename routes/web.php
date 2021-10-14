@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Post;
@@ -22,7 +23,6 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-
 // Articles
 Route::get('/articles', function () {
     return view('articles.index', [
@@ -38,18 +38,8 @@ Route::get('articles/{article}', function ($slug){
 
 
 // Posts
-Route::get('/posts', function () {
-    return view('posts.index', [
-        'posts' => Post::latest()->get(),
-        'categories' => Category::all()
-    ]);
-})->name('posts.index');
-
-Route::get('posts/{post}', function (Post $post){ // posts/{post:slug}
-    return view('posts.show', [
-        'post' => $post
-    ]);
-})->name('posts.show');
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show'); // posts/{post:slug}
 
 // Post Categories
 Route::get('categories/{category:slug}', function (Category $category){
