@@ -52,23 +52,18 @@
                 </div>
 
             @empty
-
                 <div class="col-12">
                     <h4 class="text-center">No Posts</h4>
                 </div>
-
             @endforelse
 
-            @if($posts->links())
+            @if($posts->count() >= 6)
                 <div class="col-12 text-center">
                     {{ $posts->links() }}
                 </div>
             @endif
 
-
         </div>
-
     </div>
-
 
 @endsection

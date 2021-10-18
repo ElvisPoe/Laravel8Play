@@ -13,10 +13,10 @@
                     <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('articles.index') }}">Users</a>
+                    <a class="nav-link" href="{{ route('users.index') }}">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('articles.index') }}">Payments</a>
+                    <a class="nav-link" href="{{ route('payments.index') }}">Payments</a>
                 </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0">

@@ -47,4 +47,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    // Get User Payments
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

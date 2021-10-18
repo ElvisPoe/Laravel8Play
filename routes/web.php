@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Models\Article;
 use App\Models\Category;
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -36,10 +37,17 @@ Route::get('articles/{article}', function ($slug){
     ]);
 })->name('articles.show');
 
+// Users
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('users/{user:username}', [UserController::class, 'show'])->name('users.show');
 
 // Posts
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show'); // posts/{post:slug}
+Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+// Payments
+Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
+Route::get('payments/{payment}', [PaymentController::class, 'show'])->name('payments.show');
 
 // Post Categories
 Route::get('categories/{category:slug}', function (Category $category){
@@ -49,7 +57,6 @@ Route::get('categories/{category:slug}', function (Category $category){
         'categories' => Category::all()
     ]);
 })->name('categories.show');
-
 
 // Post Author
 Route::get('author/posts/{author:username}', function (User $author){
