@@ -6,3 +6,7 @@ body {
 .mt-head {
     margin-top: 5rem;
 }
+
+.card {
+    height: 100%;
+}

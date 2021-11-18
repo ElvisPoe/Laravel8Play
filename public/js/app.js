@@ -6,7 +6,7 @@ function selectCategory() {
     if(value === 'all'){
         window.location.href = "/posts";
     } else {
-        window.location.href = "/categories/"+value;
+        window.location.href = "/posts?category="+value;
     }
 
 }

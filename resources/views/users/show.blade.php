@@ -38,15 +38,39 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach($user->payments as $payment)
+                        @forelse($user->payments as $payment)
                             <tr class="text-center">
                                 <th scope="row">{{ $payment->id }}</th>
                                 <td>{{ $payment->amount }}</td>
                                 <td>{{ $payment->updated_at }}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr class="text-center">
+                                <td>Not Found</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
+
+                @if($user->payments->last())
+                    <h2>Last Payment</h2>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr class="text-center">
+                            <th scope="col">#</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Payed at</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="text-center">
+                            <th scope="row">{{ $user->payments->last()->id }}</th>
+                            <td>{{ $user->payments->last()->amount }}</td>
+                            <td>{{ $user->payments->last()->updated_at }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                @endif
             </div>
 
             <div class="col-12 mt-5">

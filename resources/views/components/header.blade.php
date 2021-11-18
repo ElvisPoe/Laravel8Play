@@ -19,9 +19,12 @@
                     <a class="nav-link" href="{{ route('payments.index') }}">Payments</a>
                 </li>
             </ul>
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+            <form class="form-inline mt-2 mt-md-0" action="/posts" method="GET">
+                <label for="search">
+                    <input type="search" name="search" id="search" class="form-control mr-2" placeholder="Search posts" value="{{ request('search') }}">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </label>
             </form>
         </div>
     </nav>

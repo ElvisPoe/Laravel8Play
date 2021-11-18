@@ -41,13 +41,13 @@ Route::get('articles/{article}', function ($slug){
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('users/{user:username}', [UserController::class, 'show'])->name('users.show');
 
-// Posts
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
-
 // Payments
 Route::get('/payments', [PaymentController::class, 'index'])->name('payments.index');
 Route::get('payments/{payment}', [PaymentController::class, 'show'])->name('payments.show');
+
+// Posts
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 // Post Categories
 Route::get('categories/{category:slug}', function (Category $category){

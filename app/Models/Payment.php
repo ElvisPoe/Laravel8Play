@@ -15,7 +15,7 @@ class Payment extends Model
         // Search filtering datefrom
         $query->when($filters['datefrom'] ?? false, fn ($query, $datefrom) =>
             $query->where(fn($query) =>
-                $query->where('updated_at', '<=', $datefrom)
+                $query->where('updated_at', '>=', $datefrom)
             )
         );
 

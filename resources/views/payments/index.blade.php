@@ -36,7 +36,7 @@
                         @foreach($payments as $payment)
                             <tr class="text-center">
                                 <th scope="row">{{ $payment->id }}</th>
-                                <td>{{ $payment->client->name }}</td>
+                                <td><a href="/users/{{ $payment->client->username }}">{{ $payment->client->name }}</a></td>
                                 <td>{{ $payment->amount }}</td>
                                 <td>{{ $payment->updated_at }}</td>
                             </tr>

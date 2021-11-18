@@ -57,11 +57,9 @@
                 </div>
             @endforelse
 
-            @if($posts->count() >= 6)
-                <div class="col-12 text-center">
-                    {{ $posts->links() }}
-                </div>
-            @endif
+            <div class="col-12 text-center">
+                {{ $posts->links() }}
+            </div>
 
         </div>
     </div>
