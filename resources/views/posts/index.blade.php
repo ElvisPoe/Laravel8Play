@@ -38,7 +38,7 @@
 
                 <div class="col-12 col-md-4 mb-3">
                     <div class="card">
-                        <img class="card-img-top" src="https://picsum.photos/600/300" alt="Card image cap">
+                        <img class="card-img-top" src="https://i.pravatar.cc/400?u={{ $post->id }}" alt="Card image cap">
                         <div class="card-body">
                             <h3>
                                 <a href="/posts/{{ $post->slug }}">{{ $post->title }}</a>
