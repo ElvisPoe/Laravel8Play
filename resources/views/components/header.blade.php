@@ -20,6 +20,15 @@
                 </li>
             </ul>
 
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('articles.index') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('articles.index') }}">Register</a>
+                </li>
+            </ul>
+
             <form class="form-inline mt-2 mt-md-0" action="/posts" method="GET">
                 <label for="search">
                     <input type="search" name="search" id="search" class="form-control mr-2" placeholder="Search posts" value="{{ request('search') }}">
